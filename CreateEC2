@@ -1,0 +1,29 @@
+#requirements, but this is what you would normally require:
+
+import boto3
+
+client = boto3.client('ec2', region_name='us-east-1')
+
+response = client.run_instances(
+    BlockDeviceMappings=[
+        {
+            'DeviceName': '/dev/xvda',
+            'Ebs': {
+
+                'DeleteOnTermination': True,
+                'VolumeSize': 8,
+                'VolumeType': 'gp2'
+            },
+        },
+    ],
+    ImageId='ami-098f16afa9edf40be',
+    InstanceType='t2.micro',
+    MaxCount=1,
+    MinCount=1,
+    Monitoring={
+        'Enabled': False
+    },
+    SecurityGroupIds=[
+        'sg-bd225483',
+    ],
+)

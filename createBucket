@@ -1,0 +1,9 @@
+#import boto3
+
+#s3 = boto3.resource('s3')
+#bucket = s3.Bucket('boto3pythoncreation-bucket')
+#print(bucket.name)
+
+import boto3
+s3_resource = boto3.resource('s3')
+s3_resource.create_bucket(Bucket= 'bucket-boto3-python-test')
